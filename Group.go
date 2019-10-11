@@ -49,7 +49,7 @@ import (
 func Group (field string, elements ... interface {}) (o map[interface {}][]interface {},
 	e error) {
 
-	if Group_buggyFunc == true {
+	if _Group_buggyFunc == true {
 		return nil, errors.New ("An error occured. Function might be buggy.")
 	}
 
@@ -80,7 +80,7 @@ func Group (field string, elements ... interface {}) (o map[interface {}][]inter
 		return nil, err.New ("An invalid element supplied.", nil, nil, errX)
 	}
 
-	if Group_fieldPattern.MatchString (field) == false {
+	if _Group_fieldPattern.MatchString (field) == false {
 		return nil, errors.New ("Invalid field name.")
 	}
 	// ..2.. }
@@ -102,8 +102,8 @@ func Group (field string, elements ... interface {}) (o map[interface {}][]inter
 }
 
 var (
-	Group_fieldPattern *regexp.Regexp
-	Group_buggyFunc bool = false
+	_Group_fieldPattern *regexp.Regexp
+	_Group_buggyFunc bool = false
 )
 
 func init () {
@@ -111,8 +111,8 @@ func init () {
 	var errX error
 	// -- |
 
-	Group_fieldPattern, errX = regexp.Compile ("^[A-Z][A-Za-z0-9_]*$")
+	_Group_fieldPattern, errX = regexp.Compile ("^[A-Z][A-Za-z0-9_]*$")
 	if errX != nil {
-		Group_buggyFunc = true
+		_Group_buggyFunc = true
 	}
 }
